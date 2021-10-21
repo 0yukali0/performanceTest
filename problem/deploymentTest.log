@@ -1,0 +1,41 @@
+Name:                   throughput.test
+Namespace:              default
+CreationTimestamp:      Thu, 21 Oct 2021 21:00:39 +0800
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=throughput.test
+Replicas:               50000 desired | 50000 updated | 50000 total | 22646 available | 27354 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=throughput.test
+           applicationId=throughput.test
+           group=kubetest-group
+           memRequest=10Mi
+           queue=root.default
+  Containers:
+   web:
+    Image:      nginx:1.12
+    Port:       80/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     20m
+      memory:  20Mi
+    Requests:
+      cpu:        10m
+      memory:     10Mi
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      False   MinimumReplicasUnavailable
+  Progressing    False   ProgressDeadlineExceeded
+OldReplicaSets:  <none>
+NewReplicaSet:   throughput.test-798676659c (50000/50000 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  25m   deployment-controller  Scaled up replica set throughput.test-798676659c to 50000
