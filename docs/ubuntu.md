@@ -27,6 +27,6 @@ cat /proc/sys/fs/inotify/max_user_watches
 ## modify kernal limits 
 ```
 sudo sysctl -w kernel.pid_max=500000
-sudo sysctl -w fs.inotify.max_user_instances=500000
+sudo sysctl -w fs.inotify.max_user_instances=50000
 sudo sysctl -w fs.inotify.max_user_watches=500000
 ```
